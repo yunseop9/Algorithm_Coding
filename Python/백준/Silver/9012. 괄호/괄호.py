@@ -7,14 +7,10 @@ for _ in range(T):
     for ch in s:
         if ch == "(":
             stack.append(ch)
+        elif stack:
+            stack.pop()
         else:
-            if stack:
-                stack.pop()
-            else:
-                stack.append(ch)
-                break
+            stack.append(ch)
+            break
                 
-    if stack:
-        print("NO")
-    else:
-        print("YES")
+    print("YES" if not stack else "NO")
