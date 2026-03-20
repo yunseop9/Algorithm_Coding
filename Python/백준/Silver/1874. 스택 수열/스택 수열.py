@@ -1,20 +1,23 @@
 import sys
 
-n = int(sys.stdin.readline())
-target = [int(sys.stdin.readline()) for _ in range(n)]
+input = sys.stdin.readline
+n = int(input())
+
 stack = []
 result = []
-targetIndex = 0
+target = [int(input()) for _ in range(n)]
+target_idx = 0
 
 for i in range(1,n+1):
     stack.append(i)
     result.append("+")
-    while stack and stack[-1] == target[targetIndex]:
-        stack.pop()
+    
+    while stack and stack[-1] == target[target_idx]:
         result.append("-")
-        targetIndex += 1
+        stack.pop()
+        target_idx += 1
 
-if len(result) == 2 * n:
+if not stack:
     print("\n".join(result))
 else:
     print("NO")
