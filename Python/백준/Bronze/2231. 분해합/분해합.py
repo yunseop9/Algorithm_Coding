@@ -1,16 +1,21 @@
-N = int(input())
+import sys
+
+input = sys.stdin.readline
+
+n = int(input().strip())
+
+result = 0
 
 def digit_sum(x):
-    sum = 0
+    total = 0
     while x > 0:
-        sum += x % 10
+        total += x %10
         x //= 10
-    return sum
+    return total
 
-con = 0
-for i in range(N):
-    if i + digit_sum(i) == N:
-        con = i
+for i in range(n):
+    if i + digit_sum(i) == n:
+        result = i
         break
-     
-print(con)
+        
+print(result)
